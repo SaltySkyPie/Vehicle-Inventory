@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateImageInput {
+  id: ID!
+  images: [String!]!
+}
+
+input CreateVehicleInput {
+  brand: String!
+  color: String!
+  engineVolume: Float!
+  fuel: FuelType!
+  model: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+enum FuelType {
+  Diesel
+  Electric
+  Ethanol
+  Hybrid
+  Hydrogen
+  NaturalGas
+  Other
+  Petrol
+}
+
+type Image {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  url: String!
+  vehicle: Vehicle!
+}
+
+type Mutation {
+  addImages(createImageInput: CreateImageInput!): Vehicle!
+  createVehicle(createVehicleInput: CreateVehicleInput!): Vehicle!
+  removeImage(id: ID!): Vehicle!
+  removeVehicle(id: ID!): Vehicle!
+  updateVehicle(updateVehicleInput: UpdateVehicleInput!): Vehicle!
+}
+
+type Query {
+  vehicle(id: ID!): Vehicle!
+  vehicles: [Vehicle!]!
+}
+
+input UpdateVehicleInput {
+  brand: String
+  color: String
+  engineVolume: Float
+  fuel: FuelType
+  id: ID!
+  model: String
+}
+
+type Vehicle {
+  brand: String!
+  color: String!
+  createdAt: DateTime!
+  engineVolume: Float!
+  fuel: FuelType!
+  id: ID!
+  images: [Image!]!
+  model: String!
+  updatedAt: DateTime!
+}
