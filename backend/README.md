@@ -4,6 +4,14 @@
 
 ## Installation
 
+
+Set your environment variables in `.env` file. You can use `.env.example` as a template.
+
+bash```
+cat .env.example > .env
+```
+
+
 ```bash
 $ npm install
 ```
