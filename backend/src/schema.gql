@@ -13,6 +13,7 @@ input CreateVehicleInput {
   engineVolume: Float!
   fuel: FuelType!
   model: String!
+  price: Float!
 }
 
 """
@@ -43,7 +44,7 @@ type Mutation {
   addImages(createImageInput: CreateImageInput!): Vehicle!
   createVehicle(createVehicleInput: CreateVehicleInput!): Vehicle!
   removeImage(id: ID!): Vehicle!
-  removeVehicle(id: ID!): Vehicle!
+  removeVehicle(id: ID!): Boolean!
   updateVehicle(updateVehicleInput: UpdateVehicleInput!): Vehicle!
 }
 
@@ -59,6 +60,7 @@ input UpdateVehicleInput {
   fuel: FuelType
   id: ID!
   model: String
+  price: Float
 }
 
 type Vehicle {
@@ -70,5 +72,6 @@ type Vehicle {
   id: ID!
   images: [Image!]!
   model: String!
+  price: Float!
   updatedAt: DateTime!
 }

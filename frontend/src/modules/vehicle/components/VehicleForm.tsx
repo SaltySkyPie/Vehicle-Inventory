@@ -16,6 +16,7 @@ import { FuelType, GetVehicleQuery } from '@app/graphql/types'
 export type VehicleFormValues = {
   brand: string
   color: string
+  price: number
   engineVolume: number
   fuel: FuelType
   model: string
@@ -28,6 +29,7 @@ const fieldStyle = { mb: 2 }
 // Validation Schema
 const validationSchema: Yup.Schema<VehicleFormValues> = Yup.object({
   brand: Yup.string().required('Brand is required'),
+  price: Yup.number().required('Price is required'),
   color: Yup.string().required('Color is required'),
   engineVolume: Yup.number().required('Engine volume is required'),
   fuel: Yup.mixed<FuelType>().oneOf(Object.values(FuelType), 'Invalid fuel type').required('Fuel is required'),
@@ -35,16 +37,17 @@ const validationSchema: Yup.Schema<VehicleFormValues> = Yup.object({
 })
 
 // Initial form values
-const getInitialValues = (vehicle?: GetVehicleQuery['vehicle']) => ({
+const getInitialValues = (vehicle?: GetVehicleQuery['vehicle']): VehicleFormValues => ({
   brand: vehicle?.brand ?? '',
   color: vehicle?.color ?? '',
-  engineVolume: vehicle?.engineVolume ?? 0,
+  engineVolume: vehicle?.engineVolume ?? 0.0,
   fuel: vehicle?.fuel ?? FuelType.Petrol,
   model: vehicle?.model ?? '',
+  price: vehicle?.price ?? 0.0,
 })
 
 // Text Field Component
-const FormTextField = ({ name, label }: { name: string; label: string }) => {
+const FormTextField = ({ name, label, type }: { name: string; label: string; type?: string }) => {
   const formik = useFormikContext<VehicleFormValues>()
 
   return (
@@ -52,6 +55,7 @@ const FormTextField = ({ name, label }: { name: string; label: string }) => {
       id={name}
       name={name}
       label={label}
+      type={type ?? 'text'}
       value={formik.values[name]}
       onChange={formik.handleChange}
       error={formik.touched[name] && Boolean(formik.errors[name])}
@@ -102,6 +106,7 @@ export default function VehicleForm({ vehicle }: { vehicle?: GetVehicleQuery['ve
           engineVolume: values.engineVolume,
           fuel: values.fuel,
           model: values.model,
+          price: values.price,
         },
       },
       refetchQueries: [{ query: GetVehiclesDocument }],
@@ -122,6 +127,7 @@ export default function VehicleForm({ vehicle }: { vehicle?: GetVehicleQuery['ve
           engineVolume: values.engineVolume,
           fuel: values.fuel,
           model: values.model,
+          price: values.price,
         },
       },
       refetchQueries: [
@@ -151,8 +157,9 @@ export default function VehicleForm({ vehicle }: { vehicle?: GetVehicleQuery['ve
       <Form>
         <FormTextField name="brand" label="Brand" />
         <FormTextField name="model" label="Model" />
+        <FormTextField name="price" label="Price" type="number" />
         <FormTextField name="color" label="Color" />
-        <FormTextField name="engineVolume" label="Engine Volume" />
+        <FormTextField name="engineVolume" label="Engine Volume" type="number" />
         <FormSelectField name="fuel" label="Fuel" options={Object.values(FuelType)} />
         <Button variant="contained" color="primary" fullWidth type="submit" sx={fieldStyle}>
           {vehicle ? 'Update' : 'Create'}

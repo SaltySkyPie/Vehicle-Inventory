@@ -1,5 +1,5 @@
 import { GetVehiclesQuery } from '@app/graphql/types'
-import { Button, Card, CardActions, CardContent, CardMedia, Chip, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Grid, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -42,14 +42,33 @@ const VehicleListItem = ({ vehicle, i }: { vehicle: GetVehiclesQuery['vehicles']
             </Typography>
           </CardContent>
           <CardActions>
-            <Button
-              size="small"
-              onClick={() => {
-                router.push(`/vehicles/${vehicle.id}`)
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                py: 1,
               }}
             >
-              Details
-            </Button>
+              <Button
+                size="small"
+                onClick={() => {
+                  router.push(`/vehicles/${vehicle.id}`)
+                }}
+              >
+                Details
+              </Button>
+              <Typography
+                variant="h6"
+                fontWeight={'bold'}
+                sx={{
+                  mr: 1,
+                }}
+              >
+                ${vehicle.price.toLocaleString()}
+              </Typography>
+            </Box>
           </CardActions>
         </Card>
       </Grid>

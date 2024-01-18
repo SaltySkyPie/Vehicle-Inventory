@@ -50,6 +50,11 @@ export class Vehicle {
   @Column('double precision')
   engineVolume: number
 
+  // price of the vehicle
+  @Field()
+  @Column('double precision')
+  price: number
+
   // color of the vehicle
   @Field()
   @Column()

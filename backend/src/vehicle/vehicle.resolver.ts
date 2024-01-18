@@ -29,7 +29,7 @@ export class VehicleResolver {
     return this.vehicleService.update(updateVehicleInput.id, updateVehicleInput)
   }
 
-  @Mutation(() => Vehicle)
+  @Mutation(() => Boolean)
   removeVehicle(@Args('id', { type: () => ID }) id: string) {
     return this.vehicleService.remove(id)
   }

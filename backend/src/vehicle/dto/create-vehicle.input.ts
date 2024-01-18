@@ -18,10 +18,13 @@ export class CreateVehicleInput {
   @Field()
   model: string
 
-  @IsNotEmpty()
   @IsNumber()
   @Field(() => Number)
   engineVolume: number
+
+  @IsNumber()
+  @Field(() => Number)
+  price: number
 
   @IsNotEmpty()
   @IsString()

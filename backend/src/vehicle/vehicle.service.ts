@@ -83,6 +83,7 @@ export class VehicleService {
     vehicle.engineVolume = updateVehicleInput.engineVolume ?? vehicle.engineVolume
     vehicle.color = updateVehicleInput.color ?? vehicle.color
     vehicle.fuel = updateVehicleInput.fuel ?? vehicle.fuel
+    vehicle.price = updateVehicleInput.price ?? vehicle.price
 
     return this.vehicleRepository.save(vehicle)
   }
@@ -90,6 +91,8 @@ export class VehicleService {
   async remove(id: string) {
     const vehicle = await this.vehicleRepository.findOneByOrFail({ id })
 
-    return this.vehicleRepository.remove(vehicle)
+    await this.vehicleRepository.remove(vehicle)
+
+    return true
   }
 }

@@ -9,6 +9,7 @@ query getVehicle($id: ID!) {
       id
       url
     }
+    price
     model
     createdAt
     updatedAt
@@ -26,6 +27,7 @@ mutation createVehicle($input: CreateVehicleInput!) {
       id
       url
     }
+    price
     model
     createdAt
     updatedAt
@@ -43,6 +45,7 @@ mutation updateVehicle($input: UpdateVehicleInput!) {
       id
       url
     }
+    price
     model
     createdAt
     updatedAt
@@ -50,20 +53,7 @@ mutation updateVehicle($input: UpdateVehicleInput!) {
 }
 
 mutation removeVehicle($id: ID!) {
-  removeVehicle(id: $id) {
-    id
-    brand
-    color
-    engineVolume
-    fuel
-    images {
-      id
-      url
-    }
-    model
-    createdAt
-    updatedAt
-  }
+  removeVehicle(id: $id) 
 }
 
 mutation addImages($input: CreateImageInput!) {
@@ -77,6 +67,7 @@ mutation addImages($input: CreateImageInput!) {
       id
       url
     }
+    price
     model
     createdAt
     updatedAt
@@ -94,6 +85,7 @@ mutation removeImage($id: ID!) {
       id
       url
     }
+    price
     model
     createdAt
     updatedAt
