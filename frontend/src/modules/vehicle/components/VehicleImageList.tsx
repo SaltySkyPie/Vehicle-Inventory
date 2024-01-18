@@ -35,7 +35,7 @@ export default function VehicleImageList({ images, id }: { images: GetVehicleQue
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.url} alt={item.title} loading="lazy" />
+            <img src={item.url} alt={item.url} loading="lazy" />
           </ImageListItem>
         ))}
         {!deleteMode && (
