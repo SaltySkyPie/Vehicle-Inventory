@@ -45,7 +45,9 @@ export default function VehicleImageList({ images, id }: { images: GetVehicleQue
         )}
       </ImageList>
       <Typography variant="body2" sx={{ mt: 1 }}>
-        {deleteMode ? 'Click on an image to delete it. Click "Cancel" to exit delete mode.' : images.length + ' image' + (images.length === 1 ? '' : 's')}
+        {deleteMode
+          ? 'Click on an image to delete it. Click "Cancel" to exit delete mode.'
+          : images.length + ' image' + (images.length === 1 ? '' : 's')}
       </Typography>
 
       <Button

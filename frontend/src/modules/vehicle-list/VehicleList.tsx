@@ -1,8 +1,8 @@
 import { useGetVehiclesQuery } from '@app/graphql/types'
+import ErrorMessage from '@app/modules/common/components/Misc/ErrorMessage'
+import LoadingIndicator from '@app/modules/common/components/Misc/LoadingIndicator'
 import { Container, Grid } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import LoadingIndicator from '@app/modules/common/components/Misc/LoadingIndicator'
-import ErrorMessage from '@app/modules/common/components/Misc/ErrorMessage'
 import AddVehicleButton from './components/AddVehicleButton'
 import Header from './components/Header'
 import VehicleListItem from './components/VehicleListItem'
@@ -38,6 +38,3 @@ const VehicleList = () => {
 }
 
 export default VehicleList
-
-
-       

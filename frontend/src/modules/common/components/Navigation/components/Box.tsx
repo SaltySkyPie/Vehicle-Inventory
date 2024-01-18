@@ -62,7 +62,7 @@ export const SmallScreenBox = () => {
           justifyContent: 'center',
         }}
         onClick={() => {
-         router.push('/')
+          router.push('/')
         }}
       >
         <Logo />
