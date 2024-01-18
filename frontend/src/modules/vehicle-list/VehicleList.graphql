@@ -1,0 +1,15 @@
+query getVehicles {
+  vehicles {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}

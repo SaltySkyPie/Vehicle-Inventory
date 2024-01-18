@@ -1,0 +1,101 @@
+query getVehicle($id: ID!) {
+  vehicle(id: $id) {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      id
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}
+
+mutation createVehicle($input: CreateVehicleInput!) {
+  createVehicle(createVehicleInput: $input) {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      id
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}
+
+mutation updateVehicle($input: UpdateVehicleInput!) {
+  updateVehicle(updateVehicleInput: $input) {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      id
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}
+
+mutation removeVehicle($id: ID!) {
+  removeVehicle(id: $id) {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      id
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}
+
+mutation addImages($input: CreateImageInput!) {
+  addImages(createImageInput: $input) {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      id
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}
+
+mutation removeImage($id: ID!) {
+  removeImage(id: $id) {
+    id
+    brand
+    color
+    engineVolume
+    fuel
+    images {
+      id
+      url
+    }
+    model
+    createdAt
+    updatedAt
+  }
+}

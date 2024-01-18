@@ -24,7 +24,11 @@ export class VehicleService {
   }
 
   findAll() {
-    return this.vehicleRepository.find()
+    return this.vehicleRepository.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    })
   }
 
   findOne(id: string) {
@@ -59,9 +63,16 @@ export class VehicleService {
   }
 
   async removeImage(imageId: string) {
-    const image = await this.imageRepository.findOneByOrFail({ id: imageId })
+    const image = await this.imageRepository.findOneOrFail({
+      where: { id: imageId },
+      relations: {
+        vehicle: true,
+      },
+    })
+    const vehicleId = image.vehicle.id
 
-    return this.imageRepository.remove(image)
+    await this.imageRepository.remove(image)
+    return await this.vehicleRepository.findOneByOrFail({ id: vehicleId })
   }
 
   async update(id: string, updateVehicleInput: UpdateVehicleInput) {

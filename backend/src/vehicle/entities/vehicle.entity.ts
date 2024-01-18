@@ -47,7 +47,7 @@ export class Vehicle {
 
   // engine volume of the vehicle
   @Field()
-  @Column()
+  @Column('double precision')
   engineVolume: number
 
   // color of the vehicle
